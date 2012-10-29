@@ -1,24 +1,18 @@
 \section*{2 Nearest Neighbours}
 
 \subsection*{Problem 4}
-
 Rewrite the distance
-
 \[
     d(\mathbf{x}, \mathbf{y}) = 
     \Sigma_i \sigma_i (\mathbf{x}_i - \mathbf{y}_j)^2, \, \sigma_i > 0
 \]
-
 in the form of \textit{Mahalanobis distance}. Hence $d(\mathbf{x}, \mathbf{y})$
 becomes:
-
 \[
     d(\mathbf{x}, \mathbf{y}) = 
     (\mathbf{x} - \mathbf{y})^T \Sigma (\mathbf{x} - \mathbf{y}) 
 \]
-
-where $\Sigma$ is defined as a square matrix
-
+where $\Sigma$ is defined as a symmetric square matrix
 \[
 \Sigma =
 \left[
@@ -33,7 +27,10 @@ where $\Sigma$ is defined as a square matrix
 \]
 
 \subsection*{Problem 5} 
+In the Euclidean distance function if the scale of one feature dominates the
+other .
+A possible solution could be to precondition the problem by scaling the feature
+that outweighs the other ones. For example if the scale of the $jth$
 
 \subsection*{Problem 6} 
 
-TODO
