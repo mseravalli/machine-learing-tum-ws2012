@@ -30,10 +30,10 @@ where $\Sigma$ is defined as a symmetric square matrix
 In the Euclidean distance function if the scale of one feature dominates the
 others this will be accentuated, so that the other features will become
 insignificant.
-A possible solution could be to precondition the problem by scaling the feature
+A possible solution could be to ``precondition'' the problem by scaling the feature
 that outweighs the other ones. For example if the scale of the $j^{th}$ feature is
 1000 times larger than the others a possible solution could be to modify the
-corresponding $\sigma_j$ of the matrix $\Sigma$ 
+corresponding $\sigma_j$ in the matrix $\Sigma$:
 \[
     \sigma_j = \frac{1}{1000}
 \]
@@ -46,8 +46,8 @@ Another possibility could be to set $\Sigma$ as the covariance matrix.
 Show that 
 \[
     \frac{p(c=0 | x^*)}{p(c=1 | x^*)} \approx 
-    \frac{exp((-\left\Vert x^* - x_0 \right\Vert)^2/(2\sigma^2))}
-         {exp((-\left\Vert x^* - x_1 \right\Vert)^2/(2\sigma^2))}
+    \frac{exp(-\left\Vert x^* - x_0 \right\Vert^2/(2\sigma^2))}
+         {exp(-\left\Vert x^* - x_1 \right\Vert^2/(2\sigma^2))}
 \]
 for $\sigma \rightarrow 0 $ corresponds to the kNN for $k = 1$.
 
@@ -65,46 +65,45 @@ Then
     \frac{p(c=0 | x^*)}{p(c=1 | x^*)} =
     \frac{\frac{N_0}{N_0 + N_1} 
             \frac{1}{N_0(2\Pi\sigma^2)} \Sigma_{n\in class0} 
-                exp((-\left\Vert x^* - x_0 \right\Vert)^2/(2\sigma^2)) }
+                exp(-\left\Vert x^* - x_0 \right\Vert^2/(2\sigma^2)) }
         {\frac{N_1}{N_0 + N_1} 
             \frac{1}{N_1(2\Pi\sigma^2)} \Sigma_{n\in class1} 
-                exp((-\left\Vert x^* - x_1 \right\Vert)^2/(2\sigma^2)) } 
+                exp(-\left\Vert x^* - x_1 \right\Vert^2/(2\sigma^2)) } 
        \Rightarrow
 \]
 \[
     \frac{p(c=0 | x^*)}{p(c=1 | x^*)} =
     \frac{\Sigma_{n\in class0} 
-                exp((-\left\Vert x^* - x_0 \right\Vert)^2/(2\sigma^2)) }
+                exp(-\left\Vert x^* - x_0 \right\Vert^2/(2\sigma^2)) }
         {\Sigma_{n\in class1} 
-                exp((-\left\Vert x^* - x_1 \right\Vert)^2/(2\sigma^2)) } 
+                exp(-\left\Vert x^* - x_1 \right\Vert^2/(2\sigma^2)) } 
 \]
 
 This last equation is dominated by the nearest point to $x^*$ so we obtain
 \[
     \frac{p(c=0 | x^*)}{p(c=1 | x^*)} \approx 
-    \frac{exp((-\left\Vert x^* - x_0 \right\Vert)^2/(2\sigma^2))}
-         {exp((-\left\Vert x^* - x_1 \right\Vert)^2/(2\sigma^2))}
+    \frac{exp(-\left\Vert x^* - x_0 \right\Vert^2/(2\sigma^2))}
+         {exp(-\left\Vert x^* - x_1 \right\Vert^2/(2\sigma^2))}
     \Rightarrow
 \]
 \[
     \frac{p(c=0 | x^*)}{p(c=1 | x^*)} \approx 
-    exp\frac{(-\left\Vert x^* - x_0 \right\Vert)^2 - 
-                (-\left\Vert x^* - x_1 \right\Vert)^2} 
-            {(2\sigma^2))}
+    exp\left(\frac{-\left\Vert x^* - x_0 \right\Vert^2 +\left\Vert x^* - x_1 \right\Vert^2} 
+            {(2\sigma^2)}\right)
 \]
 In such case if 
-$(\left\Vert x^* - x_0 \right\Vert) < (\left\Vert x^* - x_1\right\Vert)$
+$\left\Vert x^* - x_0 \right\Vert < \left\Vert x^* - x_1\right\Vert$
 we have that 
 \[
-    \frac{p(c=0 | x^*)}{p(c=1 | x^*)} = \infty
+    \frac{p(c=0 | x^*)}{p(c=1 | x^*)} = \infty = \frac{1}{0}
 \]
 which means that the $x^*$ would be marked as belonging to class 0.
 
 If instead we have
-$(\left\Vert x^* - x_0 \right\Vert) > (\left\Vert x^* - x_1\right\Vert)$
+$\left\Vert x^* - x_0 \right\Vert > \left\Vert x^* - x_1\right\Vert$
 this yields to
 \[
-    \frac{p(c=0 | x^*)}{p(c=1 | x^*)} = 0
+    \frac{p(c=0 | x^*)}{p(c=1 | x^*)} = 0 = \frac{0}{1}
 \]
 that corresponds as marking the new $x^*$ to class 1.
 This is the very same principle as the kNN, i.e. assigning the new point to the
