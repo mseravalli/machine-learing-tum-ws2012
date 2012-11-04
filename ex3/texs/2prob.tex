@@ -1,5 +1,124 @@
 \section{Probability Inequalities}
 \subsection{Markov Inequality}
-\subsection{Chebyshev Inequality}
-\subsection{Jensen's Inequality}
 
+Let $I_{X > c}$ be the indicator random variable of the event $X > c$:
+\[
+    I_{X> c} = \begin{cases}
+                  1 & \text{if $X > c$,} \\
+                  0 & \text{otherwise.}
+                  \end{cases}
+\]
+We then have
+\[
+    cI_{X> c} = \begin{cases}
+                   c & \text{if $X > c$,} \\
+                   0 & \text{otherwise,}
+                   \end{cases}
+\]
+and hence $$cI_{X> c} \leq X,$$ since $X$ is non-negative. 
+Now, by the monotonicity of the expectation operator we have 
+$$E[cI_{X> c}] \leq E[X].$$ Taking linearity of $E$, into account,
+we get $$cE[I_{X> c}] \leq E[X].$$
+
+Note that we can compute $E[I_{X> c}]$:
+\begin{eqnarray*}
+    E[I_{X> c}] &=& \sum_{x}p(x)I_{X> c} \\
+                   &=& \sum_{x \leq c}p(x)I_{X> c} + \sum_{x > c}p(x)I_{X> c} \\
+                   &=& \sum_{x \leq c}p(x)0 + \sum_{x > c}p(x)1 \\
+                   &=& \sum_{x > c}p(x) \\
+                   &=& P(X> x).
+\end{eqnarray*}
+Thus, we arrive at $$ cP(X > x) = cE[I_{X > c}] \leq E[X], $$ and hence
+$$ P(X > x) \leq \frac{E[X]}{c}.$$
+
+For the second part, let $X$ be the random variable, describing the number
+of ``heads'' out of $n$ coin tosses. Since we are throwing a fair coin, we
+clearly have $$ E[X] = \frac{n}{2}.$$ Now we have $c=\frac{3}{4}n$ and by the
+Markov inequality we obtain 
+\[ 
+  P\left(X> \frac{3}{4}n\right) \leq \frac{\frac{n}{2}}{\frac{3}{4}n} 
+    = \frac{2}{3}
+\]
+and $$ P\left(X > \frac{3}{4}n\right)\leq \frac{2}{3}.$$
+
+
+\subsection{Chebyshev Inequality}
+Similarly, let $I_{(X - E[X])^2 > c^2}$ be the indicator random variable of the event $(X - E[X])^2 > c^2$:
+\[
+    I_{(X - E[X])^2 > c^2} = \begin{cases}
+                  1 & \text{if $(X - E[X])^2 > c^2$,} \\
+                  0 & \text{otherwise.}
+                  \end{cases}
+\]
+We then have
+\[
+    c^2I_{(X - E[X])^2 > c^2} = \begin{cases}
+                   c^2 & \text{if $(X - E[X])^2 > c^2$,} \\
+                   0 & \text{otherwise,}
+                   \end{cases}
+\]
+and hence $$c^2I_{(X - E[X])^2 > c^2} \leq (X - E[X])^2.$$ 
+Now, by the monotonicity of the expectation operator we have 
+$$E[c^2I_{(X - E[X])^2 > c^2}] \leq E[(X-E[X])^2] = Var[E].$$ Taking linearity of $E$, into account,
+we get $$c^2E[I_{(X - E[X])^2 > c^2}] \leq Var[E].$$
+
+Note that we can compute $E[I_{(X - E[X])^2 > c^2}]$:
+\begin{eqnarray*}
+    E[I_{(X - E[X])^2 > c^2}] &=& \sum_{x}p(x)I_{(X - E[X])^2 > c^2}  \\
+                              &=& P\left( (X-E[X])^2 > c^2 \right)    \\
+                              &=& P\left( |X-E[X]| > c \right)
+\end{eqnarray*}
+Thus, we arrive at $$ P(|X-E[X]| > c) \leq \frac{Var[X]}{c^2}.$$
+
+For the second part, let again $X$ be the random variable, describing the 
+number of ``heads'' out of $n$ coin tosses. Now, due to the symmetry of the 
+problem and the fact that $E[X]=\frac{n}{2}$, we make the following 
+observation:
+\[ P\left( X > \frac{3}{4}n \right) = P\left( X < \frac{1}{4}n \right).  \]
+
+Thus, 
+\begin{eqnarray}
+P\left( X > \frac{3}{4}n \right) 
+& = & \frac{2P\left(X > \frac{3}{4}n\right)}{2} \\
+& = & \frac{P\left(X > \frac{3}{4}n\right) + P\left(X < \frac{1}{4}n\right)}{2} \\
+& = & \frac{P\left(\{X > \frac{3}{4}n\} \cup \{X < \frac{1}{4}n\}\right)}{2} \\
+& = & \frac{P\left( | X - E[X]| > \frac{1}{4}n \right)}{2}.
+\end{eqnarray}
+
+Now, after applying Chebyshev's inequality, we obtain:
+\[
+  P\left( X > \frac{3}{4}n \right) 
+    \leq \frac{Var[X]}{2 \left(\frac{1}{4}n\right)^2}
+    = \frac{8Var[X]}{n^2}.
+\]
+
+Now we just need the variance:
+\begin{eqnarray*}
+  Var[X] & = & E[(X-E[X])^2] \\
+         & = & \sum_xp(x)\left(x-\frac{n}{2}\right)^2 \\
+         & = & \sum_{k=0}^n\frac{\binom{n}{k}}{2^n}\left(k-\frac{n}{2}\right)^2.
+\end{eqnarray*}
+
+
+\subsection{Jensen's Inequality}
+The statement is obviously true for $n=1$: 
+$$ f(1\cdot x_1) \leq 1\cdot f(x_1)$$ and for $n=2$ since $f$ is convex:
+$$ f(\lambda x_1 + (1-\lambda)x_2) \leq \lambda f(x_1) + (1-\lambda)f(x_2),$$
+which gives us the base step of the induction.
+
+Now suppose it is true for $n=k$ and consider $n=k+1$:
+\begin{eqnarray}
+  f\left(\sum_{i=1}^{k+1}\lambda_ix_i\right) 
+    &=& f\left(\sum_{i=1}^{k}\lambda_ix_i+\lambda_{k+1}x_{k+1}\right) \\
+    &=& f\left((1-\lambda_{k+1})\left(\frac{\sum_{i=1}^{k}\lambda_ix_i}{1-\lambda_{k+1}}\right)+\lambda_{k+1}x_{k+1}\right) \\
+    &\leq& (1-\lambda_{k+1})f\left(\sum_{i=1}^k\frac{\lambda_ix_i}{1-\lambda_{k+1}}\right) + \lambda_{k+1}f(x_{k+1}) \\
+    &\leq& (1-\lambda_{k+1})f\left(\sum_{i=1}^k\frac{\lambda_i}{1-\lambda_{k+1}}x_i\right) + \lambda_{k+1}f(x_{k+1}) \\
+    &\leq& (1-\lambda_{k+1})\left(\sum_{i=1}^k\frac{\lambda_i}{1-\lambda_{k+1}}f(x_i)\right) + \lambda_{k+1}f(x_{k+1}) \\
+    &=& \sum_{i=1}^k\lambda_if(x_i) + \lambda_{k+1}f(x_{k+1}) \\
+    &=& \sum_{i=1}^{k+1}\lambda_if(x_i).
+\end{eqnarray}
+
+In going from (6) to (7) we used the definition of convexity of $f$. 
+In going from (7) to (8) we use the fact that 
+$$ \sum_{i=1}^k\lambda_i = 1 - \lambda_{k+1}$$ and apply the inductive 
+hypothesis for $n=k$.
