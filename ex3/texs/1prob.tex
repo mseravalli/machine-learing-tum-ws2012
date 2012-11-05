@@ -1,2 +1,142 @@
 \section{Basic Probability}
+\subsection*{Problem 1}
+
+Probability to be a terrorist $P(x=T)=\frac{1}{100}$ \\
+Probability to be a citizen $P(x=C)=\frac{99}{100}$ \\
+Probability to recognize a terrorist as such $P(T|x=T)=\frac{95}{100}$
+\\
+Probability to recognize a citizen as terrorist
+$P(T|x=C)=1-P(C|x=C)=\frac{5}{100}$
+\\
+Probability that my neighbor is actually a terrorist 
+
+\[
+P(x=T|T)=\frac{P(x=T)P(T|x=T)}{P(x=T)P(T|x=T)+P(x=C)P(T|x=C)}
+\]
+
+
+\[
+P(x=T|T)=\frac{\frac{1}{100}\frac{95}{100}}{\frac{1}{100}\frac{95}{100}+\frac{99}{100}\frac{5}{100}}=\frac{19}{118}\approx0.16
+\]
+
+
+
+\subsection*{Problem 2}
+
+\textbf{Notation} $P(2d=RR)$ probability to draw two red balls, $P(RR)$
+probability that the box contains two red balls.\\
+Probability of having 2 red balls in the box $P(RR)=\frac{1}{4}$\\
+Probability of having one red and one white ball in the box
+$P(WR)=\frac{1}{2}$\\
+Probability of having 2 white balls in the box $P(WW)=\frac{1}{4}$\\
+Probability that all the balls in the box are red given that 3 red
+balls were extracted in 3 different draws:
+\[
+P(RR|3d=RRR)=
+\]
+\[
+=\frac{P(1d=R|RR)^3P(RR)}{P(1d=R|RR)^{3}P(RR)+P(1d=R|WR)^{3}P(WR)+P(1d=R|WW)^{3}P(WW)}
+\]
+We know that
+\[
+P(1d=R|WW)=0
+\]
+\[
+P(1d=R|WR)=\frac{1}{2}
+\]
+\[
+P(1d=R|RR)=1
+\]
+Hence
+\[
+P(RR|3d=RRR)=\frac{P(RR)}{P(RR)+P(1d=R|WR)^{3}P(WR)}=\frac{\frac{1}{4}}{\frac{1}{4}+\frac{1}{8}\frac{1}{2}}=\frac{4}{5}
+\]
+
+
+
+\subsection*{Problem 3}
+
+Expected value:
+
+\[
+E\left[X\right]=\int_{-\infty}^{+\infty}xf(x)dx=\int_{-\infty}^{0}xf(x)dx+\int_{0}^{1}xf(x)dx+\int_{1}^{+\infty}xf(x)dx
+\]
+\[
+E\left[X\right]=0+\int_{0}^{1}xdx+0=\left|\frac{x^{2}}{2}\right|_{0}^{1}=\frac{1}{2}
+\]
+ Variance:
+ \[
+ V\left[X\right]=E\left[(X-E\left[X\right])^{2}\right]=\int_{0}^{1}\left(x-\frac{1}{2}\right)^{2}dx
+ \]
+ \[
+ V\left[X\right]=\int_{0}^{1}x^{2}-x+\frac{1}{4}dx=\left|\frac{x^{3}}{3}-\frac{x^{2}}{2}+\frac{x}{4}\right|_{0}^{1}=\frac{1}{3}-\frac{1}{2}+\frac{1}{4}=\frac{1}{12}
+ \]
+
+
+
+\subsection*{Problem 4}
+
+\subsubsection*{Part A}
+
+Prove 
+\[
+E\left[X\right]=E_{Y}\left[E_{X|Y}\left[X\right]\right]
+\]
+
+We know that
+
+\[
+E\left[X\right]=\sum_{x}xp_{X}(x)
+\]
+\[
+E\left[X\right]=\sum_{x}x\sum_{y}p_{XY}(x,y)
+\]
+\[
+E\left[X\right]=\sum_{x}x\sum_{y}\frac{p_{XY}(x,y)}{p_{Y}(y)}p_{Y}(y)
+\]
+\[
+E\left[X\right]=\sum_{y}\sum_{x}x\frac{p_{XY}(x,y)}{p_{Y}(y)}p_{Y}(y)
+\]
+Use Bayes rule
+\[
+E\left[X\right]=\sum_{y}\sum_{x}xp_{X|Y}(x|y)p_{Y}(y)
+\]
+\[
+E\left[X\right]=\sum_{y}E_{X|Y}\left[X\right]p_{Y}(y)
+\]
+\[
+E\left[X\right]=E_{y}\left[E_{X|Y}\left[X\right]\right]
+\]
+
+\subsubsection*{Part B}
+
+Prove
+\[
+Var_{X}\left[X\right]=E_{Y}\left[Var_{X|Y}\left[X\right]\right]+Var_{Y}\left[E_{X|Y}\left[X\right]\right]
+\]
+
+The R.H.S. can be also rewritten as
+\[
+E_{Y}\left[Var_{X|Y}\left[X\right]\right]+Var_{Y}\left[E_{X|Y}\left[X\right]\right]=
+\]
+\[
+=E_{Y}\left[E{}_{X|Y}\left[X^{2}\right]-E_{X|Y}\left[X\right]^{2}\right]+E_{Y}\left[E_{X|Y}\left[X\right]^{2}\right]-E_{Y}\left[E_{X|Y}\left[X\right]\right]^{2}
+\]
+
+By exploiting the linearity of $E$ we get
+\[
+E_{Y}\left[Var_{X|Y}\left[X\right]\right]+Var_{Y}\left[E_{X|Y}\left[X\right]\right]=
+\]
+\[
+=E_{Y}\left[E{}_{X|Y}\left[X^{2}\right]\right]-E_{Y}\left[E_{X|Y}\left[X\right]^{2}\right]+E_{Y}\left[E_{X|Y}\left[X\right]^{2}\right]-E_{Y}\left[E_{X|Y}\left[X\right]\right]^{2}
+\]
+\[
+=E_{Y}\left[E{}_{X|Y}\left[X^{2}\right]\right]-E_{Y}\left[E_{X|Y}\left[X\right]\right]^{2}
+\]
+
+If the result of the Part A is reused we obtain
+\[
+E_{Y}\left[Var_{X|Y}\left[X\right]\right]+Var_{Y}\left[E_{X|Y}\left[X\right]\right]=E_{X}\left[X^{2}\right]-E_{X}\left[X\right]^{2}=Var_{X}\left[X\right]
+\]
+
 
