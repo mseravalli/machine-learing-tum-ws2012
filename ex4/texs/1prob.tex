@@ -1,0 +1,33 @@
+
+\section{Still refreshing ...}
+
+\subsection*{Problem 1}
+
+Consider the possible cases:
+\begin{itemize}
+  \item[case] "H", probability: $\frac{1}{2}$
+  \item[case] "TH", probability: $\frac{1}{4}$
+  \item[case] "TTH", probability: $\frac{1}{8}$
+  \item[case] "TTTH", probability: $\frac{1}{16}$
+\end{itemize}
+and so on. For the expected number of heads, this yields the infinite series:
+\begin{equation}
+  E[H] = \sum_x x \cdot p(x) = \sum_{n=0}^\infty 1 \cdot \frac{1}{2^n} = 
+         \sum_{n=0}^\infty \frac{1}{2^n} = \frac{\frac{1}{2}}{1 - \frac{1}{2}} = 
+         \frac{2}{2} = 1,
+\end{equation}
+where we used the formula for infinite geometric series.
+
+In the same way, for the expected number of tails we get:
+\begin{equation}
+  E[T] = \sum_x x \cdot p(x) = \sum_{n=0}^\infty n \cdot \frac{1}{2^{n+1}} = 1,
+\end{equation}
+where we used Wolfram Mathematica to evaluate the infinite sum.
+
+So, $E[H] = 1, E[T] = 1$.
+
+
+
+
+
+\subsection*{Problem 2}
