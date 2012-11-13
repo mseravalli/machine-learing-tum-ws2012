@@ -31,3 +31,22 @@ So, $E[H] = 1, E[T] = 1$.
 
 
 \subsection*{Problem 2}
+Probability of using urn $u$: $p(u)=\frac{1}{11}$
+
+Probability of extracting $n_{B}$ black balls and $n_{W}$ from urn
+$u$: 
+\[
+p(n_{B},n_{W}|u)=\frac{\binom{u}{n_{B}}\binom{10-u}{n_{W}}}{2^{n_{B}+n_{W}}}
+\]
+
+
+Probability of using urn $u$ given $N=10$ extractions, where $3$
+of the drawn balls were black ($n_{B}=3$, $n_{W}=N-n_{B}=7$):
+
+\[
+p(u|n_{B},n_{W})=\frac{\frac{\binom{u}{n_{B}}\binom{10-u}{n_{W}}}{2^{n_{B}+n_{W}}}p(u)}{\sum_{u}\frac{\binom{u}{n_{B}}\binom{10-u}{n_{W}}}{2^{n_{B}+n_{W}}}p(u)}=\frac{\binom{u}{n_{B}}\binom{10-u}{n_{W}}}{\sum_{u}\binom{u}{n_{B}}\binom{10-u}{n_{W}}}
+\]
+\[
+p(u|3_{B},7_{W})=\frac{\binom{u}{3}\binom{10-u}{7}}{\sum_{i=0}^{i=10}\binom{i}{3}\binom{10-i}{7}}=\binom{u}{3}\binom{10-u}{7}
+\]
+ the denominator was evaluated with Mathematica.
