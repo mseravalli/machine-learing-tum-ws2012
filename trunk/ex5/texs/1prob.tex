@@ -1,0 +1,39 @@
+\section{Probability Theory}
+
+
+\subsection*{Problem 1}
+
+
+\subsection*{Problem 2}
+
+Show that the sum of two independent random Gaussian variables $X_{1}$,
+$X_{2}$ is a Gaussian. \\
+We can define every Gaussian random variable $X\sim\mathcal{N}(u,\Sigma)$
+using a linear transformation on 
+\[
+Z\sim\mathcal{N}(0,I)
+\]
+\[
+X=\mu+LZ
+\]
+ where $L$ is defined by the Cholesky decomposition as 
+ \[
+ L=\Sigma L^{-T}
+ \]
+ Hence $X_{1}$and $X_{2}$ can be defined as
+
+ \[
+ X_{1}=\mu_{1}+L_{1}Z
+ \]
+ \[
+ X_{2}=\mu_{2}+L_{2}Z
+ \]
+  if we now sum these two quantities we obtain a new random variable
+      $X_{3}$ and we then obtain
+      \[
+      X_{3}=(\mu_{1}+\mu_{2})+(L_{1}+L_{2})Z
+      \]
+       $X_{3}$ is again a random variable with the following distribution
+       $X_{3}\sim\mathcal{N}(\mu_{1}+\mu_{2},(L_{1}+L_{2})(L_{1}+L_{2})^{T})$.
+
+\subsection*{Problem 3}
