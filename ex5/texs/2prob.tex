@@ -1,0 +1,86 @@
+\section{Weighted Linear Regression}
+
+
+\subsection*{Problem 4}
+
+2. Derive the Normal equations for the least squares problem from equation given
+in the previous exercise. Assume
+all $\theta_{n}=1$.
+\[
+\frac{\partial E}{\partial w}=\frac{\partial XY}{\partial w}
+\]
+where $X=\left(z-\Phi w\right)^{T}$ and $Y=\left(z-\Phi w\right)$.
+We have then
+\[
+\frac{\partial E}{\partial w}=\frac{\partial XY}{\partial w}=X\frac{\partial
+Y}{\partial w}+\frac{\partial X}{\partial w}Y=\left(z-\Phi
+w\right)^{T}\frac{\partial\left(z-\Phi w\right)}{\partial
+w}+\frac{\partial\left(z-\Phi w\right)^{T}}{\partial w}\left(z-\Phi w\right)
+\]
+\[
+\frac{\partial E}{\partial w}=\left(z-\Phi w\right)^{T}\left(\frac{\partial
+z}{\partial w}-\frac{\partial\Phi w}{\partial w}\right)+\left(\frac{\partial
+z}{\partial w}-\frac{\partial(\Phi w)^{T}}{\partial w}\right)\left(z-\Phi
+w\right)
+\]
+\[
+\frac{\partial E}{\partial w}=\left(z-\Phi w\right)^{T}\left(-\Phi\frac{\partial
+w}{\partial w}\right)+\left(-\frac{\partial w{}^{T}}{\partial
+w}\Phi^{T}\right)\left(z-\Phi w\right)
+\]
+\[
+\frac{\partial E}{\partial w}=-\left(z-\Phi
+w\right)^{T}\Phi-\Phi^{T}\left(z-\Phi w\right)
+\]
+\[
+\frac{\partial E}{\partial w}=-\Phi^{T}\left(z-\Phi
+w\right)-\Phi^{T}\left(z-\Phi w\right)
+\]
+\[
+\frac{\partial E}{\partial w}=2\left(\Phi^{T}\Phi w-\Phi^{T}z\right)
+\]
+
+
+3. Generalize the least square problems for all $\theta$.
+\[
+\frac{\partial E}{\partial w}=\frac{\partial XY}{\partial w}
+\]
+where $X=\left(z-\Phi w\right)^{T}$ and $Y=\Theta\left(z-\Phi w\right)$.
+Since $\Theta$ is diagonal we know that $\Theta=\Theta^{T}$. We
+have then
+\[
+\frac{\partial E}{\partial w}=\frac{\partial XY}{\partial w}=X\frac{\partial
+Y}{\partial w}+\frac{\partial X}{\partial w}Y=\left(z-\Phi
+w\right)^{T}\frac{\partial\Theta\left(z-\Phi w\right)}{\partial
+w}+\frac{\partial\left(z-\Phi w\right)^{T}}{\partial w}\Theta\left(z-\Phi
+w\right)
+\]
+\[
+\frac{\partial E}{\partial w}=\left(z-\Phi
+w\right)^{T}\left(\frac{\partial\Theta z}{\partial w}-\frac{\partial\Theta\Phi
+w}{\partial w}\right)+\left(\frac{\partial z}{\partial w}-\frac{\partial(\Phi
+w)^{T}}{\partial w}\right)\Theta\left(z-\Phi w\right)
+\]
+\[
+\frac{\partial E}{\partial w}=\left(z-\Phi
+w\right)^{T}\left(-\Theta\Phi\frac{\partial w}{\partial
+w}\right)+\left(-\frac{\partial w{}^{T}}{\partial
+w}\Phi^{T}\right)\Theta\left(z-\Phi w\right)
+\]
+\[
+\frac{\partial E}{\partial w}=-\left(z-\Phi
+w\right)^{T}\left(\Theta\Phi\right)-\Phi^{T}\Theta\left(z-\Phi w\right)
+\]
+\[
+\frac{\partial E}{\partial w}=-\left(\Theta\Phi\right)^{T}\left(z-\Phi
+w\right)-\Phi^{T}\Theta\left(z-\Phi w\right)
+\]
+\[
+\frac{\partial E}{\partial w}=-\Phi^{T}\Theta^{T}\left(z-\Phi
+w\right)-\Phi^{T}\Theta\left(z-\Phi w\right)=-\Phi^{T}\Theta\left(z-\Phi
+w\right)-\Phi^{T}\Theta\left(z-\Phi w\right)
+\]
+\[
+\frac{\partial E}{\partial w}=2\left(\Phi^{T}\Theta\Phi w-\Phi^{T}\Theta
+z\right)
+\] 
