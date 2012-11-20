@@ -3,6 +3,34 @@
 
 \subsection*{Problem 4}
 
+1. Show that 
+\[
+E(w) = \frac{1}{2}\sum^N \theta_n \left( z_n - w^T \phi(x_n) \right)^2 =
+( z - \Phi w )^T \Theta (z - \Phi w)
+\]
+We firstly define $\Theta$ as a square diagonal matrix, where the diagonal 
+at the $ith$ row contains $\frac{1}{2}\theta_i$.
+
+We know that 
+\[
+( z - \Phi w )^T \Theta (z - \Phi w) = tr (( z - \Phi w )^T \Theta (z - \Phi w))
+\]
+then we apply the cyclic property of the trace 
+\[
+tr (( z - \Phi w )^T \Theta (z - \Phi w)) = tr ( \Theta (z - \Phi w)( z - \Phi w )^T)
+\]
+Let's define $A = (z - \Phi w)( z - \Phi w )^T$, this square matrix will have on
+the diagonal the square of the single elements $(z_i - \phi(x_i)w)^2$ then after
+multiplying $A$ by $\Theta$ we will have that the elements on the diagonal have 
+the following form $\frac{1}{2}\theta_i(z_i - \phi(x_i)w)^2$. The trace operator is defined as the
+sum of the diagonal of a matrix, thus
+\[
+( z - \Phi w )^T \Theta (z - \Phi w) = tr ((z - \Phi w)^T \Theta (z - \Phi w))=
+\sum\frac{1}{2}\theta_i(z_i - \phi(x_i)w)^2
+\]
+
+
+
 2. Derive the Normal equations for the least squares problem from equation given
 in the previous exercise. Assume
 all $\theta_{n}=1$.
