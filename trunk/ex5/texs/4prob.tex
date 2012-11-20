@@ -1,0 +1,21 @@
+\section{Ridge Regression}
+
+\subsection*{Problem 6}
+We add at the bottom of the matrix $\Phi$ $p$ additional rows $\sqrt{\lambda}I$
+and at the bottom of $z$ we add $p$ zeros.
+The error is defines as
+\[
+E(w) = \frac{1}{2}\sum^{N+p}_{n=1} \theta_n \left( z_n - w^T \phi(x_n) \right)^2 
+\]
+However after the modification of $\Phi$ and $z$ we know that the last $p$
+elements of the sum will have the following form $(-w^T \sqrt{\lambda})$.
+We can rewrite the sum as follows
+\[
+E(w) = \frac{1}{2}\sum^{N}_{n=1} \theta_n \left( z_n - w^T \phi(x_n) \right)^2 +
+\frac{1}{2}\sum^{N+p}_{n=N+1} \left( -w^T \sqrt{\lambda} \right)^2 
+\]
+\[
+E(w) = \frac{1}{2}\sum^{N}_{n=1} \theta_n \left( z_n - w^T \phi(x_n) \right)^2 +
+\frac{1}{2}\lambda\sum^{N+p}_{n=N+1}  w^T w 
+\]
+that is the ridge regression.
