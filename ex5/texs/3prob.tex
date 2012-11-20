@@ -1,1 +1,11 @@
 \section{Basis Functions}
+
+\subsection*{Problem 5}
+Since we know that \[\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}} \quad \textrm{and} \quad \sigma(x) = \frac{1}{1 + e^{-x}},\]
+we can directly derive the desired equation:
+\begin{eqnarray*}
+2\sigma(2x)-1 &=& \frac{2}{1 + e^{-2x}} - 1 \\
+              &=& \frac{2 - 1 - e^{-2x}}{1 + e^{-2x}} \\
+              &=& \frac{1 - e^{-2x}}{1 + e^{-2x}} \\
+              &=& \frac{e^x - e^{-x}}{e^x + e^{-x}}.
+\end{eqnarray*}
