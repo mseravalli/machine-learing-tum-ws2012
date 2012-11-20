@@ -37,3 +37,32 @@ X=\mu+LZ
        $X_{3}\sim\mathcal{N}(\mu_{1}+\mu_{2},(L_{1}+L_{2})(L_{1}+L_{2})^{T})$.
 
 \subsection*{Problem 3}
+
+It is sufficient to show that the joint probability density function is equal to the product 
+of the individual probability densities:
+\[
+    f_{Z}(z) = f_X(x)f_Y(y).
+\]
+A direct calculation yields the result:
+\[
+    \rho(X,Y) = 0, \textrm{ hence } \Sigma = \begin{pmatrix}
+                                               \sigma_x^2 & 0   \\
+                                               0          & \sigma_y^2
+                                             \end{pmatrix}
+\]
+
+\[
+    \textrm{ and } \Sigma^{-1} = \begin{pmatrix}
+                                   \sigma_x^{-2} & 0   \\
+                                   0          & \sigma_y^{-2}
+                                 \end{pmatrix}
+\]
+Also, $\det\Sigma = \sigma_x^2 \sigma_y^2$. Now, since $Z=(X,Y)$ is bivariate, we know $f_Z(x,y)$:
+\begin{eqnarray*}
+    f_Z(z) &=& \frac{1}{2\pi\sqrt{|\Sigma|}} \exp\left(-\frac{1}{2}(z-\mu)^T\Sigma^{-1}(z-\mu)\right)\\
+           &=& \frac{1}{2\pi\sigma_x \sigma_y} \exp\left(-\frac{1}{2} \begin{pmatrix}x-\mu_x \\ y-\mu_y\end{pmatrix}^T \begin{pmatrix}\sigma_x^{-2} & 0 \\ 0 & \sigma_y^{-2}\end{pmatrix}\begin{pmatrix}x-\mu_x \\ y-\mu_y\end{pmatrix}\right) \\
+           &=& \frac{1}{2\pi\sigma_x \sigma_y} \exp\left(-\frac{1}{2} \left(\left(\frac{x-\mu_x}{\sigma_x}\right)^2 + \left(\frac{y-\mu_y}{\sigma_y}\right)^2\right)\right) \\
+           &=& \frac{1}{2\pi\sigma_x \sigma_y} \exp\left(-\frac{1}{2} \left(\frac{x-\mu_x}{\sigma_x}\right)^2 \right)\exp \left( -\frac{1}{2}\left(\frac{y-\mu_y}{\sigma_y}\right)^2\right) \\
+           &=& f_X(x)f_Y(y) 
+\end{eqnarray*}
+Hence, $X$ and $Y$ are independent.
