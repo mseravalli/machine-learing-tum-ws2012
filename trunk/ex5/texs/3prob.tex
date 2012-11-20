@@ -9,3 +9,12 @@ we can directly derive the desired equation:
               &=& \frac{1 - e^{-2x}}{1 + e^{-2x}} \\
               &=& \frac{e^x - e^{-x}}{e^x + e^{-x}}.
 \end{eqnarray*}
+
+For the second part, consider the following:
+\begin{eqnarray*}
+  y(x,w) &=& w_0 + \sum_jw_j\sigma\left(\frac{x-\mu_j}{s}\right) \\
+         &=& w_0 + \sum_jw_j\left(\frac{\tanh\left(\frac{x-\mu_j}{2s}\right) + 1}{2} \right)\\
+         &=& w_0 + \sum_j\frac{w_j}{2}\tanh\left(\frac{x-\mu_j}{2s}\right)  + \sum_jw_j.
+\end{eqnarray*}
+
+Hence, \[ u_0 = w_0 + \sum_jw_j, \qquad u_j = \frac{w_j}{2}.\]
