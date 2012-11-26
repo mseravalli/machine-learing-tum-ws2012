@@ -36,17 +36,19 @@ Probability of using urn $u$: $p(u)=\frac{1}{11}$
 Probability of extracting $n_{B}$ black balls and $n_{W}$ from urn
 $u$: 
 \[
-p(n_{B},n_{W}|u)=\frac{\binom{u}{n_{B}}\binom{10-u}{n_{W}}}{2^{n_{B}+n_{W}}}
+p(n_{B},n_{W}|u)=\left(\frac{u}{10}\right)^{n_{B}}\left(\frac{10-u}{10}\right)^{n_{W}}\binom{10}{n_{B}}
 \]
-
 
 Probability of using urn $u$ given $N=10$ extractions, where $3$
 of the drawn balls were black ($n_{B}=3$, $n_{W}=N-n_{B}=7$):
+\[
+p(u|n_{B},n_{W})=\frac{\left(\frac{u}{10}\right)^{n_{B}}\left(\frac{10-u}{10}\right)^{n_{W}}\binom{10}{n_{B}}p(u)}{\sum_{i=0}^{10}\left(\frac{i}{10}\right)^{n_{B}}\left(\frac{10-i}{10}\right)^{n_{W}}\binom{10}{n_{B}}p(i)}=\frac{\left(\frac{u}{10}\right)^{n_{B}}\left(\frac{10-u}{10}\right)^{n_{W}}}{\sum_{i=0}^{10}\left(\frac{i}{10}\right)^{n_{B}}\left(\frac{10-i}{10}\right)^{n_{W}}}
+\]
+\[
+p(u|3,7)=\frac{\left(\frac{u}{10}\right)^{3}\left(\frac{10-u}{10}\right)^{7}}{\sum_{i=0}^{10}\left(\frac{i}{10}\right)^{3}\left(\frac{10-i}{10}\right)^{7}}
+\]
 
+The probability of alice drawing another black ball is:
 \[
-p(u|n_{B},n_{W})=\frac{\frac{\binom{u}{n_{B}}\binom{10-u}{n_{W}}}{2^{n_{B}+n_{W}}}p(u)}{\sum_{u}\frac{\binom{u}{n_{B}}\binom{10-u}{n_{W}}}{2^{n_{B}+n_{W}}}p(u)}=\frac{\binom{u}{n_{B}}\binom{10-u}{n_{W}}}{\sum_{u}\binom{u}{n_{B}}\binom{10-u}{n_{W}}}
+p(1_B | u) = \frac{u}{10} p(u | n_B , n_W)
 \]
-\[
-p(u|3_{B},7_{W})=\frac{\binom{u}{3}\binom{10-u}{7}}{\sum_{i=0}^{i=10}\binom{i}{3}\binom{10-i}{7}}=\binom{u}{3}\binom{10-u}{7}
-\]
- the denominator was evaluated with Mathematica.
