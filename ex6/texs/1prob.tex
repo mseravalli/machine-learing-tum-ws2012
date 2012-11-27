@@ -1,2 +1,49 @@
-\section{Probability Theory}
+\section{Linear separability}
 
+\subsection*{Problem 1}
+
+First we will show that if the convex hulls of two sets of points intersect, then they cannot be 
+separable.
+
+Assume that for the convex hulls of the sets $\{x_i\}_n$ and $\{y_i\}_m$ intersect, i.e. there 
+exists a point $z$, such that 
+\[\begin{cases} 
+z = \sum_n\alpha_nx_n, \quad 0 \leq \alpha_n \leq 1, \quad\sum_n\alpha_n = 1\\ 
+z = \sum_m\beta_my_m , \quad 0 \leq \beta_m  \leq 1, \quad\sum_m\beta_m  = 1.
+\end{cases}\] Furthermore, assume that they are separable. Then, by the definition of separability, 
+there exist $w$ and $w_0$ such that 
+\[\begin{cases}w^Tx_n + w_0 > 0 \\ w^Ty_m + w_0 < 0.\end{cases}\] 
+
+Now let us compute $w^Tz+w_0$:
+\begin{eqnarray*}
+w^Tz + w_0 &=& w^T\left(\sum_n\alpha_nx_n\right) + 1\cdot w_0 \\
+           &=& w^T\left(\sum_n\alpha_nx_n\right) + \left(\sum_n\alpha_n\right)\cdot w_0 \\
+           &=& \sum_n\alpha_n\left(w^Tx_n + w_0\right) > 0.
+\end{eqnarray*}
+On the other hand,
+\begin{equation*}
+w^Tz + w_0 = \sum_m\beta_m\left(w^Tx_m + w_0\right) < 0.
+\end{equation*}
+
+Thus, we get a contradiction, which means that if two sets have intersecting convex hulls, then
+they are not linearly separable.
+
+
+Now for the contrary: suppose the two sets $\{x_i\}_n$ and $\{y_i\}_m$ are linearly separable. Then
+there exist $w$ and $w_0$ such that 
+\[\begin{cases}w^Tx_n + w_0 > 0 \\ w^Ty_m + w_0 < 0.\end{cases}\] 
+Assume now that their convex hulls intersect, i.e. there 
+exists a point $z$, such that 
+\[\begin{cases} 
+z = \sum_n\alpha_nx_n, \quad 0 \leq \alpha_n \leq 1, \quad\sum_n\alpha_n = 1\\ 
+z = \sum_m\beta_my_m , \quad 0 \leq \beta_m  \leq 1, \quad\sum_m\beta_m  = 1.  \end{cases}\]
+
+Following the exact same computation, we get
+\[\begin{cases}
+w^Tz + w_0 = \sum_n\alpha_n\left(w^Tx_n + w_0\right) > 0 \\
+w^Tz + w_0 = \sum_m\beta_m\left(w^Tx_m + w_0\right) < 0.
+\end{cases}\]
+Contradiction.
+
+So the two statements that we showed form the equivalence relation "two sets of points are 
+linearly separable if and only if their convex hulls do not intersect".
