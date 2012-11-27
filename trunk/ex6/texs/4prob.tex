@@ -25,10 +25,10 @@ b_{k}-1_{k} & if\, t_{k}=-1
 \[
 \tilde{w}^{T}w_{k}=\sum_{i=0}^{k-1}t_{i}\tilde{w}^{T}x_{i}
 \]
-by knowing that $t_{i}\tilde{w}^{T}x_{i}\geq k\gamma$ we can assert
+by knowing that $t_{i}\tilde{w}^{T}x_{i}\geq \gamma$ we can assert
 the following
 \[
-\tilde{w}^{T}w_{k}=\sum_{i=0}^{k-1}t_{i}\tilde{w}^{T}x_{i}\geq k\gamma
+\tilde{w}^{T}w_{k}=\sum_{i=0}^{k-1}t_{i}\tilde{w}^{T}x_{i} \geq \sum_{i=0}^{k-1}\gamma = k\gamma
 \]
 
 
@@ -39,7 +39,7 @@ the following
 from problem 7 we know that $w_{k}=\sum_{i=0}^{k-1}t_{i}x_{i}$ hence
 we can write 
 \[
-\left\Vert \sum_{i=0}^{k-1}t_{i}x_{i}\right\Vert ^{2}<kR^{2}
+\left\Vert \sum_{i=0}^{k-1}t_{i}x_{i}\right\Vert ^{2} \leq kR^{2}
 \]
 by using the triangle inequality
 $\left|A+B\right|\leq\left|A\right|+\left|B\right|$
